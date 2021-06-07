@@ -1,0 +1,86 @@
+-- Cont 1
+-- =, >, <, >=, <=, <> ho?c !=
+SELECT EMPLOYEE_NAME || ' has a salary of ' || SALARY AS "NAME - SALARY"
+FROM EMPLOYEE
+WHERE SALARY > 200000;
+
+-- Between and
+SELECT *
+FROM EMPLOYEE
+WHERE SALARY BETWEEN 200000 AND 300000;
+
+SELECT *
+FROM EMPLOYEE
+WHERE SALARY >= 200000 AND SALARY <= 300000;
+
+-- In
+SELECT *
+FROM EMPLOYEE
+WHERE EMPLOYEE_ID IN (1, 3, 5);
+
+-- Like
+-- % ??i di?n cho nhi?u chu?i, nhi?u ký t?, ho?c giá tr? 0
+-- _ ??i di?n cho m?t ký t? ho?c giá tr? 0
+
+SELECT *
+FROM EMPLOYEE
+WHERE EMPLOYEE_NAME LIKE 'Nguyen%';
+
+SELECT *
+FROM EMPLOYEE
+WHERE EMPLOYEE_NAME LIKE '%Sang';
+
+SELECT *
+FROM EMPLOYEE
+WHERE EMPLOYEE_NAME LIKE '%D%';
+
+SELECT *
+FROM EMPLOYEE
+WHERE EMPLOYEE_NAME LIKE '%?ình%';
+
+SELECT *
+FROM EMPLOYEE;
+
+SELECT *
+FROM EMPLOYEE
+WHERE DEPARTMENT LIKE '_ec_';
+
+-- X? lý giá tr? % ho?c _ trong chu?i b?ng ESCAPE(\)
+SELECT *
+FROM EMPLOYEE
+WHERE JOB_POSITION LIKE '%B_';
+
+SELECT *
+FROM EMPLOYEE
+WHERE JOB_POSITION LIKE '%!%B_' ESCAPE '!';
+
+-- Cont 2 
+-- is null
+SELECT *
+FROM EMPLOYEE
+WHERE MANAGER IS NULL;
+
+-- Ch? dùng is null không so sánh v?i null vì so sánh v?i null ??u là null.
+
+-- And, or, not
+SELECT *
+FROM EMPLOYEE
+WHERE SALARY NOT IN(500000);
+
+-- Cont 3 order by
+SELECT *
+FROM EMPLOYEE
+ORDER BY SALARY DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
