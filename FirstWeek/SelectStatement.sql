@@ -28,7 +28,7 @@ FROM EMPLOYEE;
 SELECT EMPLOYEE_NAME || Q'[ Department's Manager] ' || MANAGER AS "NAME - MANAGER"
 FROM EMPLOYEE;
 
--- X? l� d?u nh�y ??n trong chu?i b?ng 2 d?u nh�y ??n.
+-- Xử lý dấu nháy trong chuỗi bằng "'".
 SELECT EMPLOYEE_NAME || ' Department''s Manager ' || MANAGER AS "NAME - MANAGER"
 FROM EMPLOYEE;
 
