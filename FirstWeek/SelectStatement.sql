@@ -24,11 +24,11 @@ FROM EMPLOYEE;
 SELECT EMPLOYEE_NAME || ' is a ' || JOB_POSITION AS "NAME - JOB"
 FROM EMPLOYEE;
 
--- X? lý d?u nháy ??n trong chu?i b?ng Quote.
+-- Xá»­ lÃ½ dáº¥u nhÃ¡y trong chuá»—i báº±ng Quote.
 SELECT EMPLOYEE_NAME || Q'[ Department's Manager] ' || MANAGER AS "NAME - MANAGER"
 FROM EMPLOYEE;
 
--- X? lý d?u nháy ??n trong chu?i b?ng 2 d?u nháy ??n.
+-- X? lï¿½ d?u nhï¿½y ??n trong chu?i b?ng 2 d?u nhï¿½y ??n.
 SELECT EMPLOYEE_NAME || ' Department''s Manager ' || MANAGER AS "NAME - MANAGER"
 FROM EMPLOYEE;
 

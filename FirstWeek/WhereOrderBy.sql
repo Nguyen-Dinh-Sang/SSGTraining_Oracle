@@ -1,5 +1,5 @@
 -- Cont 1
--- =, >, <, >=, <=, <> ho?c !=
+-- =, >, <, >=, <=, <> hoặc !=
 SELECT EMPLOYEE_NAME || ' has a salary of ' || SALARY AS "NAME - SALARY"
 FROM EMPLOYEE
 WHERE SALARY > 200000;
@@ -19,8 +19,8 @@ FROM EMPLOYEE
 WHERE EMPLOYEE_ID IN (1, 3, 5);
 
 -- Like
--- % ??i di?n cho nhi?u chu?i, nhi?u k� t?, ho?c gi� tr? 0
--- _ ??i di?n cho m?t k� t? ho?c gi� tr? 0
+-- % đại diện cho nhiều chuỗi, nhiều ký tự, hoặc giá trị 0
+-- _ đại diện cho một ký tự hoặc giá trị 0
 
 SELECT *
 FROM EMPLOYEE
@@ -36,7 +36,7 @@ WHERE EMPLOYEE_NAME LIKE '%D%';
 
 SELECT *
 FROM EMPLOYEE
-WHERE EMPLOYEE_NAME LIKE '%?�nh%';
+WHERE EMPLOYEE_NAME LIKE '%?�nh%';
 
 SELECT *
 FROM EMPLOYEE;
@@ -45,7 +45,7 @@ SELECT *
 FROM EMPLOYEE
 WHERE DEPARTMENT LIKE '_ec_';
 
--- X? l� gi� tr? % ho?c _ trong chu?i b?ng ESCAPE(\)
+-- Xử lý ký tự % hoặc _ trong chuỗi bằng ESCAPE(\)
 SELECT *
 FROM EMPLOYEE
 WHERE JOB_POSITION LIKE '%B_';
@@ -60,7 +60,7 @@ SELECT *
 FROM EMPLOYEE
 WHERE MANAGER IS NULL;
 
--- Ch? d�ng is null kh�ng so s�nh v?i null v� so s�nh v?i null ??u l� null.
+-- Chỉ dùng is null không so sánh với null vì so sánh với null thì luôn null.
 
 -- And, or, not
 SELECT *
