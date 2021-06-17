@@ -47,7 +47,15 @@ FROM ((NHAN_VIEN
                             LEFT JOIN NHAN_VIEN ON NHAN_VIEN_ID = CAP_TREN_ID)) ON MNV = CAP_DUOI_ID)
 ORDER BY MNV;
         
-        
-        
+-- Câu 4
+SELECT HO || ' ' || DEM || ' ' || TEN AS "Họ Tên Nhân Viên", LUONG AS "Mức Lương", TO_CHAR(NGAY_SINH, 'fmDD/MM/yyyy') AS "Ngày Sinh"
+FROM (NHAN_VIEN
+        LEFT JOIN (SELECT NHAN_VIEN_ID AS "NV", LUONG
+                    FROM LUONG, (SELECT NHAN_VIEN_ID AS NVID, MAX(LUONG_TU_NGAY) AS NGAY
+                                    FROM LUONG
+                                    GROUP BY NHAN_VIEN_ID)
+                     WHERE NHAN_VIEN_ID = NVID AND LUONG_TU_NGAY = NGAY) ON NHAN_VIEN_ID = NV)
+WHERE LOWER(HO) = LOWER('vŨ') AND LUONG > 10000
+ORDER BY NGAY_SINH
     
     
