@@ -30,14 +30,15 @@ WHERE LOWER(HO) = LOWER('vŨ') AND LUONG > 10000
 ORDER BY NGAY_SINH;
 
 -- Câu 5.
-INSERT INTO LUONG(LUONG_ID, NHAN_VIEN_ID, LUONG_TU_NGAY, LUONG)
--- cần sử lại để id tự tăng.
-https://stackoverflow.com/questions/11296361/how-to-create-id-with-auto-increment-on-oracle
+INSERT INTO LUONG(NHAN_VIEN_ID, LUONG_TU_NGAY, LUONG)
+SELECT NHAN_VIEN_ID, TO_DATE('01-10-2019', 'dd-mm-yyyy'), LUONG + LUONG * 0.3
+FROM LUONG
+WHERE NHAN_VIEN_ID IN (SELECT CAP_TREN_ID
+                        FROM QUAN_LY
+                        GROUP BY CAP_TREN_ID);
+                        
+-- Câu 7 Tương tự câu 3.
 
-SELECT CAP_TREN_ID
-FROM QUAN_LY
-GROUP BY CAP_TREN_ID;
-    
 -- Lấy tên quản lý của mã nhân viên.
 SELECT NHAN_VIEN.HO || ' ' || NHAN_VIEN.DEM || ' ' || NHAN_VIEN.TEN AS "QL"
 FROM NHAN_VIEN
