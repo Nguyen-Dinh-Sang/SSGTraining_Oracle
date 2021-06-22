@@ -1,14 +1,14 @@
---- Phòng ban
+--- Phòng ban.
 CREATE TABLE PHONG_BAN (
     PHONG_BAN_ID INTEGER PRIMARY KEY,
     MA_PHONG_BAN NVARCHAR2(10) NOT NULL,
     TEN_PHONG_BAN NVARCHAR2(20) NOT NULL
 );
 
--- Create sequence
+-- Create sequence.
 CREATE SEQUENCE PHONG_BAN_SEQUENCE;
 
--- create tigger using the sequence
+-- create tigger using the sequence.
 CREATE OR REPLACE TRIGGER PHONG_BAN_TRIGGER
 BEFORE INSERT ON PHONG_BAN
 FOR EACH ROW
@@ -19,17 +19,17 @@ BEGIN
   FROM   DUAL;
 END;
 
--- Chức vụ
+-- Chức vụ.
 CREATE TABLE CHUC_VU (
     CHUC_VU_ID INTEGER PRIMARY KEY,
     MA_CHUC_VU NVARCHAR2(10) NOT NULL,
     TEN_CHUC_VU NVARCHAR2(20) NOT NULL
 );
 
--- Create sequence
+-- Create sequence.
 CREATE SEQUENCE CHUC_VU_SEQUENCE;
 
--- create tigger using the sequence
+-- create tigger using the sequence.
 CREATE OR REPLACE TRIGGER CHUC_VU_TRIGGER
 BEFORE INSERT ON CHUC_VU
 FOR EACH ROW
@@ -40,7 +40,7 @@ BEGIN
   FROM   DUAL;
 END;
 
--- Nhân viên
+-- Nhân viên.
 CREATE TABLE NHAN_VIEN (
     NHAN_VIEN_ID INTEGER PRIMARY KEY,
     MA_NHAN_VIEN NVARCHAR2(10) NOT NULL,
@@ -52,10 +52,10 @@ CREATE TABLE NHAN_VIEN (
     FOREIGN KEY (QUAN_LY_ID) REFERENCES NHAN_VIEN(NHAN_VIEN_ID)
 );
 
--- Create sequence
+-- Create sequence.
 CREATE SEQUENCE NHAN_VIEN_SEQUENCE;
 
--- create tigger using the sequence
+-- create tigger using the sequence.
 CREATE OR REPLACE TRIGGER NHAN_VIEN_TRIGGER
 BEFORE INSERT ON NHAN_VIEN
 FOR EACH ROW
@@ -66,7 +66,7 @@ BEGIN
   FROM   DUAL;
 END;
 
--- Lương
+-- Lương.
 CREATE TABLE LUONG (
     LUONG_ID INTEGER PRIMARY KEY,
     NHAN_VIEN_ID INTEGER NOT NULL,
@@ -76,10 +76,10 @@ CREATE TABLE LUONG (
     FOREIGN KEY (NHAN_VIEN_ID) REFERENCES NHAN_VIEN(NHAN_VIEN_ID)
 )
 
--- Create sequence
+-- Create sequence.
 CREATE SEQUENCE LUONG_SEQUENCE;
 
--- Create tigger using the sequence
+-- Create tigger using the sequence.
 CREATE OR REPLACE TRIGGER LUONG_TRIGGER
 BEFORE INSERT ON LUONG 
 FOR EACH ROW
@@ -90,7 +90,7 @@ BEGIN
   FROM   DUAL;
 END;
 
--- Nhân viên - Chức vụ
+-- Nhân viên - Chức vụ.
 CREATE TABLE NHAN_VIEN_CHUC_VU (
     NHAN_VIEN_CHUC_VU_ID INTEGER PRIMARY KEY,
     CHUC_VU_ID INTEGER NOT NULL,
@@ -101,10 +101,10 @@ CREATE TABLE NHAN_VIEN_CHUC_VU (
     FOREIGN KEY (NHAN_VIEN_ID) REFERENCES NHAN_VIEN(NHAN_VIEN_ID)
 );
 
--- Create sequence
+-- Create sequence.
 CREATE SEQUENCE NHAN_VIEN_CHUC_VU_SEQUENCE;
 
--- Create tigger using the sequence
+-- Create tigger using the sequence.
 CREATE OR REPLACE TRIGGER NHAN_VIEN_CHUC_VU_TRIGGER
 BEFORE INSERT ON NHAN_VIEN_CHUC_VU
 FOR EACH ROW
@@ -115,7 +115,7 @@ BEGIN
   FROM   DUAL;
 END;
 
--- Nhân viên - Phòng ban
+-- Nhân viên - Phòng ban.
 CREATE TABLE NHAN_VIEN_PHONG_BAN (
     NHAN_VIEN_PHONG_BAN_ID INTEGER PRIMARY KEY,
     PHONG_BAN_ID INTEGER NOT NULL,
@@ -126,10 +126,10 @@ CREATE TABLE NHAN_VIEN_PHONG_BAN (
     FOREIGN KEY (NHAN_VIEN_ID) REFERENCES NHAN_VIEN(NHAN_VIEN_ID)
 );
 
--- Create sequence
+-- Create sequence.
 CREATE SEQUENCE NHAN_VIEN_PHONG_BAN_SEQUENCE;
 
--- Create tigger using the sequence
+-- Create tigger using the sequence.
 CREATE OR REPLACE TRIGGER NHAN_VIEN_PHONG_BAN_TRIGGER
 BEFORE INSERT ON NHAN_VIEN_PHONG_BAN
 FOR EACH ROW
