@@ -1,0 +1,33 @@
+SELECT LUONG_NHAN_VIEN('SSG001') AS "Lương Hiện Tại"
+FROM DUAL;
+
+CREATE OR REPLACE FUNCTION LUONG_NHAN_VIEN(MA_NHAN_VIEN NVARCHAR2)    
+RETURN NUMBER
+AS LUONG NUMBER(10,2); 
+BEGIN  
+    SELECT LUONG INTO LUONG
+    FROM LUONG
+    WHERE LUONG_TU_NGAY <= SYSDATE 
+            AND NHAN_VIEN_ID = (SELECT NHAN_VIEN_ID
+                                FROM NHAN_VIEN
+                                WHERE MA_NHAN_VIEN = MA_NHAN_VIEN
+                                        AND ROWNUM = 1)
+            AND LUONG_DEN_NGAY IS NULL 
+            OR LUONG_DEN_NGAY > SYSDATE;
+RETURN LUONG;    
+END;
+
+-- Lấy lương theo ID nhân viên
+SELECT LUONG
+FROM LUONG
+WHERE LUONG_TU_NGAY <= SYSDATE 
+        AND NHAN_VIEN_ID = (SELECT NHAN_VIEN_ID
+                            FROM NHAN_VIEN
+                            WHERE MA_NHAN_VIEN = 'SSG001')
+        AND LUONG_DEN_NGAY IS NULL 
+        OR LUONG_DEN_NGAY > SYSDATE;
+
+-- Lấy ID nhân viên từ mã nhân viên.
+SELECT NHAN_VIEN_ID
+FROM NHAN_VIEN
+WHERE MA_NHAN_VIEN = 'SSG001';

@@ -1,3 +1,4 @@
+-- Không tìm được quản lý của nhân viên đó.
 SELECT PB AS "Phòng Ban",
         MNV AS "Mã Nhân Viên",
         HTNV AS "Họ Tên Nhân Viên",
