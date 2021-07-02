@@ -10,6 +10,28 @@ select table_name, column_name, data_type, data_length, data_precision, data_sca
 from   user_tab_columns
 where table_name = 'NHAN_VIEN';
 
+-- thêm cột vào bảng.
+alter table this_table_has_three_columns add (
+  this_is_a_timestamp_column    timestamp, 
+  this_is_a_binary_large_object blob
+);
+
+-- Kiểm tra.
+select column_name, data_type, data_length, data_precision, data_scale
+from   user_tab_columns
+where  table_name = 'THIS_TABLE_HAS_THREE_COLUMNS';
+
+-- Xóa cột khỏi bảng.
+alter table this_table_has_three_columns drop (
+  this_is_a_timestamp_column, 
+  this_is_a_binary_large_object
+);
+
+-- Xem lại thông tin.
+select column_name, data_type, data_length, data_precision, data_scale
+from   user_tab_columns
+where  table_name = 'THIS_TABLE_HAS_THREE_COLUMNS';
+
 -- Kiểu character.
 create table character_data (
   varchar_10_col   varchar2(10),
@@ -53,3 +75,15 @@ create table datetime_data (
 select column_name, data_type, data_length, data_precision, data_scale
 from   user_tab_columns
 where  table_name = 'DATETIME_DATA';
+
+-- Kiểu binary.
+-- Dùng lưu file nhị phân raw có kích thức nhỏ hơn blob.
+create table binary_data (
+  raw_col  raw(1000),
+  blob_col blob
+);
+
+-- Xem thông tin.
+select column_name, data_type, data_length, data_precision, data_scale
+from   user_tab_columns
+where  table_name = 'BINARY_DATA';
